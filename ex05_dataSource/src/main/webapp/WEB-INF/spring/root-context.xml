@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 직접 Bean 등록 -->
+	<bean id="personDto1" class="com.example.app.domain.dto.PersonDto">
+		<constructor-arg name="username" value="홍길동" />
+		<constructor-arg name="age" value="11" />
+		<constructor-arg name="addr" value="창원" />
+	</bean>
+	
+	<bean id="personDto2" class="com.example.app.domain.dto.PersonDto">
+		<constructor-arg name="username" value="홍길동1" />
+		<constructor-arg name="age" value="55" />
+		<constructor-arg name="addr" value="울산" />
+	</bean>
+	
+	<context:component-scan base-package="com.example.app.config" />
+	
+	<bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/testDB" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>
+	<!--  -->
+	
+	<!-- Custom Bean 등록 방법
+	1.설정파일에 등록(xml, propertis, yml, yaml)
+	2.javaConfig (java파일)
+	
+	
+	-->
+</beans>
